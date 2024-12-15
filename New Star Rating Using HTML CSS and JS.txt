@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      flex-direction: row-reverse;
+    }
+    .stars input {
+      display: none;
+    }
+    .stars label {
+      font-size: 2.5rem;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .stars label:hover, .stars label:hover ~ label, .stars input:checked ~ label {
+      color: #f7b731;
+    }
+    #rating-text {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Star Rating</h2>
+    <div class="stars">
+      <input type="radio" name="star" id="star5" value="5">
+      <label for="star5">&#9733;</label>
+      <input type="radio" name="star" id="star4" value="4">
+      <label for="star4">&#9733;</label>
+      <input type="radio" name="star" id="star3" value="3">
+      <label for="star3">&#9733;</label>
+      <input type="radio" name="star" id="star2" value="2">
+      <label for="star2">&#9733;</label>
+      <input type="radio" name="star" id="star1" value="1">
+      <label for="star1">&#9733;</label>
+    </div>
+    <div id="rating-text">Select a rating</div>
+    <script>
+      const stars = document.querySelectorAll('.stars input');
+      const ratingText = document.getElementById('rating-text');
+      stars.forEach((star) => {
+        star.addEventListener('change', () => {
+          const value = star.value;
+          ratingText.textContent = `You rated ${value} star${value > 1 ? 's' : ''}!`;
+        });
+      });
+    </script>
+  </div>
+</body>
+</html>
